@@ -2,7 +2,7 @@ package com.abcode.ecommerce.dto;
 
 import com.abcode.ecommerce.entity.Address;
 import com.abcode.ecommerce.entity.Customer;
-import com.abcode.ecommerce.entity.OrdemItem;
+import com.abcode.ecommerce.entity.OrderItem;
 import com.abcode.ecommerce.entity.Order;
 import lombok.Data;
 
@@ -15,6 +15,6 @@ public class Purchase {
     private Address shippingAddress;
     private Address billingAddress;
     private Order order;
-    private Set<OrdemItem> ordemItems;
+    private Set<OrderItem> orderItems;
 
 }

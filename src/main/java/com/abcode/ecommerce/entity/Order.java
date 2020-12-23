@@ -6,7 +6,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,7 +42,7 @@ public class Order {
     private Date lastUpdated;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-    private Set<OrdemItem> ordemItems = new HashSet<>();
+    private Set<OrderItem> orderItems = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -57,14 +56,14 @@ public class Order {
     @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
     private Address billingAddress;
 
-    public void add(OrdemItem item){
+    public void add(OrderItem item){
 
         if(item != null){
-            if(ordemItems == null){
-                ordemItems = new HashSet<>();
+            if(orderItems == null){
+                orderItems = new HashSet<>();
             }
 
-            ordemItems.add(item);
+            orderItems.add(item);
             item.setOrder(this);
         }
     }

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Table(name = "order_item")
 @Getter
 @Setter
-public class OrdemItem {
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
