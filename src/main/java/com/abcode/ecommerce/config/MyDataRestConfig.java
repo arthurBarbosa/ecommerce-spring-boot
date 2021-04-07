@@ -1,5 +1,6 @@
 package com.abcode.ecommerce.config;
 
+import com.abcode.ecommerce.entity.Order;
 import com.abcode.ecommerce.entity.Product;
 import com.abcode.ecommerce.entity.ProductCategory;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,6 +41,12 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         // disable HTTP methods for ProductCategory: PUT, POST and DELETE
         config.getExposureConfiguration()
                 .forDomainType(ProductCategory.class)
+                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnSupportedActions)))
+                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnSupportedActions));
+
+        // disable HTTP methods for ProductCategory: PUT, POST and DELETE
+        config.getExposureConfiguration()
+                .forDomainType(Order.class)
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnSupportedActions)))
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnSupportedActions));
 
